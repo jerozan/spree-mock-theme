@@ -55,6 +55,29 @@ Deface::Override.new(virtual_path: 'spree/shared/_nav_bar',
 	partial: 'theme/search'
 )
 
+# update search bar layout
+## remove original select input
+## remove original search button
+Deface::Override.new(virtual_path: 'spree/shared/_search',
+	name: 'remove_original_select_input',
+	remove: 'erb[silent]:contains(\'cache\')',
+	closing_selector: 'erb[silent]:contains(\'end\')'
+)
+
+## remove original search button
+Deface::Override.new(virtual_path: 'spree/shared/_search',
+	name: 'remove_original_search_button',
+	remove: 'erb[loud]:contains(\'submit_tag\')'
+)
+
+## move search select and button as input add-ons
+## on update ensure search still works the same as originals were copied into partial
+Deface::Override.new(virtual_path: 'spree/shared/_search',
+	name: 'move_original_search_button',
+	surround: 'erb[loud]:contains(\'search_field_tag\')',
+	partial: 'theme/search_bar'
+)
+
 #===================#
 # update sub header #
 #===================#
