@@ -1,7 +1,12 @@
 /*
+variables
+*/
+$text-color: #505050;
+$text-hover-color: #d76474;
+
+/*
 all front end header updates go here
 */
-
 div#spree-header {
 	width: 100%;
 	position: fixed;
@@ -10,6 +15,8 @@ div#spree-header {
 	right: 0;
 	z-index: 1;
 	background: none;
+	border-bottom: 1px solid $text-color;
+	box-shadow: 0 0.15em 0.35em 0 rgba(0,0,0,0.135);
 
 	header#header {
 		background: rgba(255, 255, 255, 0.6);
@@ -30,19 +37,88 @@ div#spree-header {
 						background-color: transparent;
 					}
 
-					a, button {
+					button {	
+						border: 0;
+						background-color: transparent;
+						box-shadow: none;
+					}
+
+					> a, 
+					> button, 
+					> div.btn-group > a,
+					> div.btn-group > button {
 						-webkit-transition: color 1s;
-						transition: color 1s;
+						transition: color 0.25s;
 						text-transform: uppercase;
-						color: white;
+						color: $text-color;
 
 						&:hover {
-							color: red;
+							color: $text-hover-color;
 						}
 					}
 
 					ul.dropdown-menu {
+						top: 52px;
+						border-radius: 0;
+						color: $text-color;
 
+						&:hover {
+							color: $text-color;
+						}
+
+						a {
+							color: inherit;
+						}
+					}
+				}
+
+				/*
+				left most navbar section
+				contains home link and shop categories
+				*/
+				li#shop-categories {
+					ul.dropdown-menu {
+				    width: 70vw;
+				    left: -20vw;
+
+				    h4.taxonomy-root {
+							text-transform: uppercase;
+							font-weight: bold;
+							font-size: 14px;
+				    }
+
+				    div.list-group {
+				    	margin-bottom: 15px;
+
+				    	a.list-group-item {
+				    		font-size: 12px;
+				    		padding: 7px 0 0 0;
+				    		border: 0;
+
+				    		&.active,
+				    		&:hover {
+				    			color: $text-hover-color;
+				    		}
+				    	}
+				    }
+					}
+				}
+
+				/*
+				right most navbar section
+				contains user and searchbar 
+				*/
+				li#link-to-cart {
+					a.cart-info {
+						span.badge {
+					    background-color: #ED760F;
+					    padding: 3px 5px;
+					    font-weight: normal;
+					    font-size: 8px;
+					    position: absolute;
+					    top: 2px;
+					    right: 5px;
+						}
 					}
 				}
 
@@ -54,9 +130,6 @@ div#spree-header {
 
 							button.btn {
 								padding: 0;
-								border: 0;
-								background-color: transparent;
-								box-shadow: none;
 
 								span:not([class$="glyphicon-remove"]) {
 									display: block;
@@ -81,6 +154,16 @@ div#spree-header {
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	nav#top-nav-bar {
+		.navbar-nav {
+			li {
+				float: right;
 			}
 		}
 	}

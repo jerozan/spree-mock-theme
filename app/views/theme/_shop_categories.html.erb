@@ -1,0 +1,13 @@
+<li id="shop-categories" data-hook>
+	<div class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Shop <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+	    <li>
+	    	<%# todo: load taxonomies when not available %>
+	      <%= render :partial => 'spree/shared/taxonomies' rescue nil %>
+	    </li>
+	  </ul>
+	</div>
+</li>
