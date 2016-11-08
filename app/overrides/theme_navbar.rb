@@ -15,8 +15,30 @@ Deface::Override.new(virtual_path: 'spree/shared/_nav_bar',
 	name: 'reduce_navbar_col_span',
 	set_attributes: 'nav#top-nav-bar',
 	attributes: {
-		class: 'col-md-6 col-sm-7'
+		class: 'col-md-3 col-sm-2'
 	}
+)
+
+# move cart to navbar (originally in sub header)
+# on update ensure cart link still works the same as this replaces original
+Deface::Override.new(virtual_path: 'spree/shared/_nav_bar',
+	name: 'move_cart_to_header',
+	insert_after: 'li#search-bar',
+	text: '
+		<li id="link-to-cart" data-hook>
+      <noscript>
+        <%= link_to Spree.t(:cart), \'/cart\' %>
+      </noscript>
+      &nbsp;
+    </li>
+    <script>Spree.fetch_cart()</script>
+	'
+)
+
+# remove original cart from sub header
+Deface::Override.new(virtual_path: 'spree/shared/_main_nav_bar',
+	name: 'remove_cart_sub_header',
+	remove: 'li#link-to-cart'
 )
 
 # create dropdown for user login
@@ -41,8 +63,23 @@ Deface::Override.new(virtual_path: 'spree/shared/_main_nav_bar',
 	name: 'reduce_main_navbar_col_span',
 	set_attributes: 'nav',
 	attributes: {
-		class: 'col-md-3 col-sm-3'
+		class: 'col-md-6 col-sm-8'
 	}
+)
+
+# add taxons to sub header
+Deface::Override.new(virtual_path: 'spree/shared/_main_nav_bar',
+	name: 'add_taxons_dropdown_menu',
+	insert_after: 'li#home-link',
+	partial: 'theme/shop_categories'
+)
+
+# set taxons into columns
+Deface::Override.new(virtual_path: 'spree/shared/_taxonomies',
+	name: 'set_taxons_into_columns',
+	replace_contents: 'erb[silent]:contains(\'cache\')',
+	closing_selector: 'erb[silent]:contains(\'end\')',
+	partial: 'theme/shop_categories_dropdown'
 )
 
 # move original sub header to navbar

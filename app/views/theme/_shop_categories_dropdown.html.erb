@@ -1,0 +1,4 @@
+<div class="col-sm-6">
+	<h4 class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %></h4>
+  <%= taxons_tree(taxonomy.root, @taxon, max_level) %>
+</div>
