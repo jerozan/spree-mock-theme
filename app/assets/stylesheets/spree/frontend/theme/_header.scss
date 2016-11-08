@@ -1,0 +1,87 @@
+/*
+all front end header updates go here
+*/
+
+div#spree-header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	background: none;
+
+	header#header {
+		background: rgba(255, 255, 255, 0.6);
+
+		figure#logo {
+			margin-bottom: 0;
+		}
+
+		div#main-nav-bar,
+		nav#top-nav-bar {
+			min-height: 30px;
+
+			ul.nav.navbar-nav {
+				li {
+					a {
+						padding-top: 7px;
+						padding-bottom: 7px;
+						background-color: transparent;
+					}
+
+					a, button {
+						-webkit-transition: color 1s;
+						transition: color 1s;
+						text-transform: uppercase;
+						color: white;
+
+						&:hover {
+							color: red;
+						}
+					}
+
+					ul.dropdown-menu {
+
+					}
+				}
+
+				&#nav-bar {
+					li#search-bar,
+					li#user-login {
+						div.btn-group {
+							padding: 7px 15px;
+
+							button.btn {
+								padding: 0;
+								border: 0;
+								background-color: transparent;
+								box-shadow: none;
+
+								span:not([class$="glyphicon-remove"]) {
+									display: block;
+								}
+
+								span.glyphicon-remove {
+									display: none;
+								}
+							}
+
+							&.open {
+								button.btn {
+									span:not([class$="glyphicon-remove"]) {
+										display: none;
+									}
+
+									span.glyphicon-remove {
+										display: block;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

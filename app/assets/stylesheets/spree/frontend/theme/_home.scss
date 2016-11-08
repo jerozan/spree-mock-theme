@@ -1,0 +1,19 @@
+/*
+all front end home updates go here
+*/
+
+div#home_carousel {
+	margin-bottom: 50px;
+
+	div.carousel-inner {
+		div.item {
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	a.carousel-control {
+		width: 5%;
+	}
+}
