@@ -3,6 +3,8 @@ all front end home updates go here
 */
 
 div#home_carousel {
+	overflow: hidden;
+	max-height: 450px;
 	margin-bottom: 50px;
 
 	div.carousel-inner {
@@ -16,4 +18,8 @@ div#home_carousel {
 	a.carousel-control {
 		width: 5%;
 	}
+}
+
+div#non_home_spacer {
+	height: 75px;
 }

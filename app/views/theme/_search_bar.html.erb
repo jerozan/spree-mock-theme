@@ -1,0 +1,14 @@
+<div class="input-group">
+	<span class="input-group-addon">
+		<% cache(cache_key_for_taxons) do %>
+      <%= select_tag :taxon,
+            options_for_select([[Spree.t(:all_departments), '']] +
+                                  @taxons.map {|t| [t.name, t.id]},
+                                  @taxon ? @taxon.id : params[:taxon]), 'aria-label' => 'Taxon', class: "form-control" %>
+    <% end %>
+	</span>
+	<%= render_original %>
+	<span class="input-group-btn">
+		<%= submit_tag Spree.t(:search), :name => nil, class: "btn btn-success" %>
+	</span>
+</div>
